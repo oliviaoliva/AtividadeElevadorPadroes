@@ -1,0 +1,83 @@
+@startuml
+class Elevador {
+    - static Elevador instanciaUnica
+    - EstadoElevador estadoAtual
+    - int andarAtual
+    - List<Integer> filaRequisicoes
+    - boolean portaAberta
+    + getInstancia(int totalPavimentos) : Elevador
+    + mudarEstado(EstadoElevador novoEstado)
+    + subirUmAndar()
+    + descerUmAndar()
+    + chegarAoAndar(int andar)
+    + abrirPorta()
+    + fecharPorta()
+    + mover() : void
+    + getFilaRequisicoes() : filaRequisicoes
+    + adicionarRequisicao(int andar)
+}
+
+interface EstadoElevador {
+    + mover(Elevador elevador, List<Integer> filaRequisicoes) : void
+}
+
+class Subindo {
+    + mover(Elevador elevador, List<Integer> filaRequisicoes) : void
+}
+
+class Descendo {
+    + mover(Elevador elevador, List<Integer> filaRequisicoes) : void
+}
+
+class Parado {
+    + mover(Elevador elevador, List<Integer> filaRequisicoes) : void
+}
+
+interface Comando {
+    + executar() : void
+}
+
+class ComandoSubir {
+    + executar() : void
+}
+
+class ComandoDescer {
+    + executar() : void
+}
+
+class ComandoAbrirPorta {
+    + executar() : void
+}
+
+class ComandoFecharPorta {
+    + executar() : void
+}
+
+class PainelControle {
+    - List<Comando> filaComandos
+    + adicionarComando(Comando comando) : void
+    + executarComandos() : void
+}
+
+Elevador --> EstadoElevador
+Elevador --> PainelControle
+Elevador --> Subindo
+Elevador --> Descendo
+Elevador --> Parado
+PainelControle --> Comando
+
+ComandoSubir --> Elevador
+ComandoDescer --> Elevador
+ComandoAbrirPorta --> Elevador
+ComandoFecharPorta --> Elevador
+
+EstadoElevador <|-- Subindo
+EstadoElevador <|-- Descendo
+EstadoElevador <|-- Parado
+
+Comando <|-- ComandoSubir
+Comando <|-- ComandoDescer
+Comando <|-- ComandoAbrirPorta
+Comando <|-- ComandoFecharPorta
+
+@enduml

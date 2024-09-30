@@ -39,7 +39,7 @@ public class MainElevador {
         painel.adicionarComando(new ComandoAbrirPorta(elevador));
 
 
-        System.out.println("\n### O elevador começará a se mover (subindo) ###\n");
+        System.out.println("\nO elevador começará a se mover (subindo)\n");
         painel.executarComandos();
 
 

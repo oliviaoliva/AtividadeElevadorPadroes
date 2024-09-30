@@ -14,6 +14,6 @@ public class PainelControle {
         for (Comando comando : filaComandos) {
             comando.executar();
         }
-        filaComandos.clear(); // Limpa os comandos após a execução
+        filaComandos.clear();
     }
 }

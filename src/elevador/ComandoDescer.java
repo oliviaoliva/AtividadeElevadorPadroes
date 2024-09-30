@@ -11,7 +11,7 @@ public class ComandoDescer implements Comando {
     public void executar() {
         elevador.mudarEstado(new Descendo());
         try {
-            elevador.mover();  // Move o elevador de acordo com o estado
+            elevador.mover();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

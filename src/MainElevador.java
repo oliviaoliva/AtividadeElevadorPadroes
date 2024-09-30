@@ -2,7 +2,9 @@ import elevador.*;
 
 public class MainElevador {
     public static void main(String[] args) throws InterruptedException {
+        System.out.println("------------------------------------------\n");
         System.out.println("Simulação Elevador\n");
+        System.out.println("------------------------------------------\n");
 
         Elevador elevador = Elevador.getInstancia(10);
         PainelControle painel = new PainelControle();
@@ -65,6 +67,8 @@ public class MainElevador {
 
         System.out.println("\nO elevador começará a se mover (descendo)\n");
         painel.executarComandos();
+
+        painel.adicionarComando(new ComandoDescer(elevador));
 
         System.out.println("\nFim da Simulação");
     }
